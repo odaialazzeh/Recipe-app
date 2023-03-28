@@ -2,10 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
+    can :read, Recipe, public: true
 
-    can :read, :all
-    can :create, Recipe
-    can [:update, :destroy], Recipe, user_id: user.id
+    return unless user.present?  # additional permissions for logged in users (they can read their own posts)
+    can :read, Recipe, user: user
+
+    return unless user.admin?  # additional permissions for administrators
+    can :read, Recipe
   end
 end
