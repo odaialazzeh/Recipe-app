@@ -22,8 +22,9 @@ gem 'importmap-rails'
 gem 'turbo-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem 'devise'
 gem 'stimulus-rails'
+gem 'devise'
+gem 'cancancan'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 gem 'pg'

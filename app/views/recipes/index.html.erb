@@ -1,0 +1,15 @@
+<%= render "layouts/navbar"%>
+
+<div>
+<%= link_to "New recipee", new_recipee_path %>
+  <h1>Recipes</h1>
+  <% @recipes.each do |recipe| %>
+    <div>
+      <h1><%= link_to recipe.name, recipe_path %></h1>
+      <p><%= recipe.description %></p>
+    </div>
+    <% if can? :destroy, recipe %>
+      <%= button_to "Remove", recipe, method: :delete%>
+    <% end %>
+  <% end %>
+</div>
