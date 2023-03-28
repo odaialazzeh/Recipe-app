@@ -27,3 +27,41 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+.header-title {
+  color: rgb(194, 186, 228);
+  text-align: center;
+}
+
+.form-control {
+  width: 60%;
+  margin-top: 2%;
+  padding: 0.4rem 0.75rem;
+  background-color: #712f89a1;
+}
+
+.btn-primary,
+.form-control {
+  margin-left: 20%;
+}
+
+.form-label,
+.label-input {
+  color: blanchedalmond;
+}
+
+.text-muted {
+  color: #0dcaf0 !important;
+  margin-bottom: 1%;
+}
+
+.form-label,
+.text-muted,
+.label-input {
+  margin-bottom: 0.5rem;
+  margin-left: 20%;
+}
+
+.btn-primary {
+  --bs-btn-bg: #265c1e;
+}
