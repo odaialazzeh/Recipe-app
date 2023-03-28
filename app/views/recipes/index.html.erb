@@ -9,6 +9,9 @@
       <h2><%= link_to recipe.name, recipe_path(recipe.id) %></h2>
       <p><%= recipe.description %></p>
     </div>
-      <%= button_to "Remove", recipe, method: :delete%>
+    
+      <%= form_for recipe, url: recipe_path(recipe), method: :delete do |f| %>
+        <%= f.submit "Remove", data: { confirm: "Are you sure?" } %>
+      <% end %>
   <% end %>
 </div>
