@@ -99,6 +99,12 @@ To run the project, execute the following command:
 - Twitter: [@twitterhandle](https://twitter.com/odaialazzeh4)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/odaialazzeh/)
 
+
+👤 **Riyana Abdi**
+
+- GitHub: [@ibtisam34](https://github.com/ibtisam34)
+- LinkedIn: [Falis](https://linkedin.com/in/falis-abdikani/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
