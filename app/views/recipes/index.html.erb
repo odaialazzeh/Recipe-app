@@ -1,0 +1,17 @@
+<%= render "layouts/navbar"%>
+
+<div class='container'>
+<%= link_to "New recipee", new_recipe_path %>
+  <h1>Recipes</h1>
+  <% @recipes.each do |recipe| %>
+  <div class='box-container'>
+    <div class='recipe-box'>
+      <h2><%= link_to recipe.name, recipe_path(recipe.id) %></h2>
+      <p><%= recipe.description %></p>
+    </div>
+    
+      <%= form_for recipe, url: recipe_path(recipe), method: :delete do |f| %>
+        <%= f.submit "Remove", data: { confirm: "Are you sure?" } %>
+      <% end %>
+  <% end %>
+</div>
