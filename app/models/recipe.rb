@@ -4,4 +4,16 @@ class Recipe < ApplicationRecord
   has_many :foods, through: :recipe_foods
   validates :name, presence: true
   validates :description, presence: true
+
+  
+  after_save :total 
+
+  def total
+    result = 0
+    recipe_foods.each do |recipe_food|
+      result += recipe_food.food.price * recipe_food.quantity
+    end
+
+    result
+  end
 end
