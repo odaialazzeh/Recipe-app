@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "recipes#index"
+  root "public_recipes#index"
   get '/inventories', to: 'inventories#index'
   get '/inventories/new', to: 'inventories#new'
   post '/inventories', to: 'inventories#create'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete '/inventory_foods/:id', to: 'inventory_foods#destroy'
   resources :users do
     resources :foods, only: [:index, :show, :new, :create, :destroy]
+    delete '/recipes/:id', to: 'recipes#destroy', as: 'recipe'
+    resources :recipes, only: [:index, :show, :new, :create, :destroy]
   end
-  delete '/recipes/:id', to: 'recipes#destroy', as: 'recipe'
-  resources :recipes, only: [:index, :show, :new, :create, :destroy]
 end
