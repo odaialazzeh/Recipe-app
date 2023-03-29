@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     @new_recipe = Recipe.new
   end
 
-  def create 
+  def create
     @food = Recipe.new(params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public))
     @food.user = current_user
     if @food.save
