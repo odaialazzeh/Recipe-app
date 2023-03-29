@@ -5,7 +5,6 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
-
   after_save :total
 
   def total
