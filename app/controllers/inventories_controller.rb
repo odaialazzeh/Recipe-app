@@ -2,7 +2,11 @@
 
 class InventoriesController < ApplicationController
   def index
-    @inventories = current_user.inventories
+    if current_user
+      @inventories = current_user.inventories
+    else
+      redirect_to login_path, alert: 'Please log in to view your inventories.'
+    end
   end
 
   def show
