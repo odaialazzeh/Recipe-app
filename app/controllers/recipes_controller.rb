@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
+
+  load_and_authorize_resource
   before_action :set_recipe, only: %i[show edit update destroy]
 
   def index
@@ -8,6 +10,12 @@ class RecipesController < ApplicationController
 
   def show
     @inventories = Inventory.where(user_id: current_user.id)
+  end
+
+  def show
+    @user = current_user
+    @recipe = Recipe.find_by(id: params[:id])
+    @recipe_foods = @recipe.recipe_foods
   end
 
   def new
