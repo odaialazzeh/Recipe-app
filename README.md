@@ -27,41 +27,21 @@
 
 # 📖 Recipe App <a name="about-project"></a>
 
-**Recipe App** The Recipe app keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
+**Recipe App** This project shows the list of posts and empower readers to interact with them by adding comments and liking posts.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary>Server</summary>
-  <ul>
-    <li><a href="https://guides.rubyonrails.org/index.html">Rails</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
-  </ul>
-</details>
+- ruby on rails
+- postgresql
 
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
 
-- **Sign-up / Log-in**
-- **Create / delete a food, recipe, inventory**
-- **Generate shopping list**
-- **Make recipe private or public**
+- **[key_feature_1Set up associations between models]**
+- **[Write SQL queries with Active Record]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -91,12 +71,7 @@ Clone this repository by using the command line :
 
 Install this project with:
 
-```sh
-  cd Recipe_App
-  bundle install
-  rails db:create
-  rails db:migrate
-```
+`npm gemfile`
 
 ### Usage
 
@@ -136,11 +111,7 @@ To run the project, execute the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- `Meal planning:This feature could help users plan their meals for the week or month, and suggest recipes based on their preferences and dietary restrictions.`
-- `Adding nutritional information to recipes could be a valuable feature for users who are concerned about their health and wellbeing. `
-- ` A rating and feedback system for recipes would allow users to rate and review recipes they have tried`
-- `Social features, such as the ability to follow other users and share recipes with friends`
-- `Adding video tutorials to the app could help users learn new cooking techniques`
+- [ ] **[Create a view and a controller]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,7 +121,7 @@ To run the project, execute the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/odaialazzeh/Recipe-app/issues).
+Feel free to check the [issues page](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -164,19 +135,9 @@ If you like this project please give it a star
 
 <!-- ACKNOWLEDGEMENTS -->
 
-
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-A list of resources that i find helpful and would like to give credit to :
-
-- [Microverse ](https://www.microverse.org)
-- [GitHub ](https://www.github.com)
-- [Youtube ](https://www.youtube.com)
-- [W3schools ](https://www.w3schools.com)
-- [Stackoverflow ](https://stackoverflow.com)
-- [Ruby](https://www.ruby-lang.org/en/)
-- [Ruby on Rails](https://guides.rubyonrails.org/)
-
+I would like to thank microverse for helping me learn the required skills
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

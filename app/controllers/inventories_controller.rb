@@ -1,48 +1,49 @@
-class InventoriesController < ApplicationController
-  before_action :set_inventory, only: %i[show edit update destroy]
+# rubocop:disable Lint/RescueException
 
+class InventoriesController < ApplicationController
   def index
-    @inventories = Inventory.all
+    if current_user
+      @inventories = current_user.inventories
+    else
+      redirect_to login_path, alert: 'Please log in to view your inventories.'
+    end
   end
 
   def show
     @inventory = Inventory.find(params[:id])
-    @inventory_foods = InventoryFood.includes(:food).where(inventory_id: @inventory.id)
-  end
-
-  def new
-    @inventory = Inventory.new
-  end
-
-  def create
-    @inventory = current_user.inventories.build(inventory_params)
-    respond_to do |format|
-      if @inventory.save
-        format.html { redirect_to inventories_url, notice: 'Inventory was successfully created.' }
-        format.json { render :show, status: :created, location: @inventory }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @inventory.errors, status: :unprocessable_entity }
-      end
-    end
+    @inventory_foods = @inventory.inventory_foods.includes(:food)
+  rescue Exception => e
+    flash[:notice] = e.message
   end
 
   def destroy
-    @inventory.destroy
+    current_user.inventories.find(params[:id]).destroy
+    flash[:notice] = 'Inventory was successfully removed'
+    splitted_path = request.path.split('/')
+    splitted_path.pop
+    redirect_to splitted_path.join('/')
+  rescue Exception => e
+    flash[:notice] = e.message
+  end
 
+  def new
+    @new_inventory = Inventory.new
+  end
+
+  def create
+    inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
     respond_to do |format|
-      format.html { redirect_to inventories_url, notice: 'Inventory was successfully destroyed.' }
-      format.json { head :no_content }
+      if inventory.save
+        flash[:notice] = 'Created an inventory succesfully'
+        format.html { redirect_to '/inventories' }
+      else
+        flash[:notice] = 'Failed to create an inventory. Try again'
+        format.html { redirect_to '/inventories/new' }
+      end
     end
-  end
-
-  private
-
-  def set_inventory
-    @inventory = Inventory.find(params[:id])
-  end
-
-  def inventory_params
-    params.require(:inventory).permit(:name, :description)
+  rescue Exception => e
+    flash[:notice] = e.message
   end
 end
+
+# rubocop:enable Lint/RescueException

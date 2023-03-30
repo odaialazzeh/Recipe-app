@@ -4,16 +4,10 @@ class Recipe < ApplicationRecord
   has_many :foods, through: :recipe_foods
   validates :name, presence: true
   validates :description, presence: true
-  validates :preparation_time, presence: true
-  validates :cooking_time, presence: true
 
   after_save :total
 
-  def total_food_items
-    recipe_foods.count
-  end
-
-  def total_price
+  def total
     result = 0
     recipe_foods.each do |recipe_food|
       result += recipe_food.food.price * recipe_food.quantity
@@ -21,6 +15,4 @@ class Recipe < ApplicationRecord
 
     result
   end
-
-  def total; end
 end
