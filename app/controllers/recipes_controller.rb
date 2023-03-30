@@ -12,12 +12,6 @@ class RecipesController < ApplicationController
     @inventories = Inventory.where(user_id: current_user.id)
   end
 
-  def show
-    @user = current_user
-    @recipe = Recipe.find_by(id: params[:id])
-    @recipe_foods = @recipe.recipe_foods
-  end
-
   def new
     @recipe = Recipe.new
   end
