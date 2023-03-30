@@ -1,6 +1,14 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @recipes = current_user.recipes
+  end
+
+  def show
+    @user = current_user
+    @recipe = Recipe.find_by(id: params[:id])
+    @recipe_foods = @recipe.recipe_foods
   end
 
   def new
