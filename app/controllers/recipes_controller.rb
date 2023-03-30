@@ -3,6 +3,12 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
+  def show
+    @user = current_user
+    @recipe = Recipe.find_by(id: params[:id])
+    @recipe_foods = @recipe.recipe_foods
+  end
+
   def new
     @new_recipe = Recipe.new
   end
