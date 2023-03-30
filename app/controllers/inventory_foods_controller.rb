@@ -1,42 +1,47 @@
-# rubocop:disable Lint/RescueException
-
 class InventoryFoodsController < ApplicationController
+  before_action :set_inventory_food, only: %i[show edit update destroy]
+
+  def index
+    @inventory_foods = InventoryFood.all
+  end
+
   def new
-    @new_inventory_food = InventoryFood.new
+    @foods = Food.includes(:user).where(user_id: current_user.id)
+    @inventory_id = params[:inventory_id]
+    @inventory_foods = InventoryFood.new
   end
 
   def create
-    inventory_food = InventoryFood.new(inventory_food_params)
+    @inventory_id = params[:inventory_id]
+    @inventory = Inventory.find(params[:inventory_id])
+    @inventory_food = InventoryFood.new(inventory_food_params)
     respond_to do |format|
-      if inventory_food.save
-        flash[:notice] = 'Created an inventory food succesfully'
-        format.html { redirect_to "/inventories/#{params[:id]}" }
+      if @inventory_food.save
+        format.html do
+          redirect_to inventory_path(@inventory.id), notice: 'Inventory food was successfully created.'
+        end
       else
-        flash[:notice] = 'Failed to create an inventory food. Try again'
-        format.html { redirect_to "/inventories/#{params[:id]}/inventory_foods/new" }
+        redirect_to new_inventory_inventory_food_path(@inventory.id), notice: 'Inventory food not created.'
       end
     end
-  rescue Exception => e
-    flash[:notice] = e.message
-    redirect_to not_found_path
   end
 
   def destroy
-    inventory_food = InventoryFood.find(params[:id])
-    inventory = inventory_food.inventory
-    inventory_food.destroy
-    flash[:notice] = 'Inventory food was successfully removed'
-    redirect_to "/inventories/#{inventory.id}"
-  rescue Exception => e
-    flash[:notice] = e.message
-    redirect_to not_found_path
+    @inventory = Inventory.find(params[:inventory_id])
+    @inventory_food.destroy
+    respond_to do |format|
+      format.html { redirect_to inventory_path(@inventory), notice: 'Inventory food was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
 
+  def set_inventory_food
+    @inventory_food = InventoryFood.find(params[:id])
+  end
+
   def inventory_food_params
-    params.require(:inventory_food).permit(:inventory_id, :food_id, :quantity)
+    params.require(:inventory_food).permit(:quantity, :inventory_id, :food_id)
   end
 end
-
-# rubocop:enable Lint/RescueException
