@@ -7,7 +7,6 @@ class Recipe < ApplicationRecord
   validates :preparation_time, presence: true
   validates :cooking_time, presence: true
 
-
   after_save :total
 
   def total_food_items
