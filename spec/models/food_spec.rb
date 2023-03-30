@@ -6,7 +6,6 @@ RSpec.describe Food, type: :model do
     @food = Food.create(name: 'Food', measurement_unit: 'kg', price: 10, quantity: 1, user: @user)
   end
 
-
   describe 'validations' do
     it 'should be valid with valid attributes' do
       expect(@food).to be_a(Food)
