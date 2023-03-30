@@ -6,7 +6,9 @@
         <p>cooking time: <%= @recipe.cooking_time%></p>
     </div>
     <div class="col-12 col-md-6">
+        <% if @recipe.user.id == current_user.id %>
         <input type="checkbox" checked data-toggle="toggle" data-onstyle="primary">
+        <% end %>
     </div>
 </div>
 <p><%= @recipe.description%></p>
