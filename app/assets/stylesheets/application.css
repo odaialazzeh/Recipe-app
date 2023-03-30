@@ -108,14 +108,3 @@ select {
 .bg-white {
   background-color: rgb(201, 134, 114) !important;
 }
-
-input[type="submit"],
-.actions__button {
-  display: block;
-  padding: 0.3em;
-  background-color: #355c6666;
-  color: #fff;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
