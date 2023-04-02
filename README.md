@@ -7,6 +7,7 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
+  - [🚀 Live Demo](#live-demo)
     - [Key Features](#key-features)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
@@ -53,6 +54,12 @@
     <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
   </ul>
 </details>
+
+<!-- LIVE DEMO -->
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://recipe-ps-app.herokuapp.com/)
 
 <!-- Features -->
 
